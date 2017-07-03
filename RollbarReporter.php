@@ -4,7 +4,7 @@ namespace Staffim\RollbarBundle;
 
 use Exception;
 use ErrorException;
-use RollbarNotifier;
+use Rollbar\Rollbar;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class RollbarReporter
 {
     /**
-     * @var \RollbarNotifier
+     * @var \Rollbar\Rollbar
      */
     private $rollbarNotifier;
 
@@ -44,7 +44,7 @@ class RollbarReporter
     /**
      * Constructor.
      *
-     * @param \RollbarNotifier $rollbarNotifier
+     * @param \Rollbar\Rollbar $rollbarNotifier
      * @param \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface $tokenStorage
      * @param \Staffim\RollbarBundle\ReportDecisionManager $reportDecisionManager
      * @param type $errorLevel
@@ -52,7 +52,7 @@ class RollbarReporter
      * @param array $scrubParameters
      */
     public function __construct(
-        RollbarNotifier $rollbarNotifier,
+        Rollbar $rollbarNotifier,
         TokenStorageInterface $tokenStorage,
         ReportDecisionManager $reportDecisionManager,
         $errorLevel = -1,
